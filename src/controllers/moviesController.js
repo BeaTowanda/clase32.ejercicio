@@ -40,18 +40,20 @@ const moviesController = {
             ]
         })
             .then(movies => {
-                res.render('recommendedMovies.ejs', {movies});
+                res.render('newestMovies', {movies});              
+                
             });
     }, //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
-    "add": function (req, res) {         
+    "add": function (req, res) {  
+        console.log("está en add") ;      
       res.render("moviesAdd.ejs")    
     },
     "altaPeli": function (req, res) {
         console.log("esta en altaPeli")
-        /*const errors = validationResult(req) ;
+        const errors = validationResult(req) ;
         if (errors.errors.length !== 0){
             res.render ("moviesAdd",{errors: errors.mapped(errors)}) }      
-        else {*/
+        else {
             db.Movie.create ({
             title : req.body.title,
             rating :req.body.rating,
@@ -60,16 +62,35 @@ const moviesController = {
             realese_date: req.body.realese_date 
           } )
           .then(movies => {
-            res.render('moviesList.ejs', { movies });
-        }, ) 
+             res.send("ALTA  REALIZADA")
+            //res.render('moviesList.ejs', { movies: movies.id });
+        }, ) }
     },     
     "edit": function(req,res) {
-        res.render("moviesUpdate.ejs",{id})
+        console.log("esta en edit");
+        console.log(req.params.id + "  es el id que consulto");
+        res.render("moviesUpdate.ejs",{movie: req.params})
     },      
     "update": function(req,res) {
-        
-        // TODO
-    },
+        console.log("esta en update")
+        const errors = validationResult(req) ;
+        if (errors.errors.length !== 0){
+            res.render ("moviesUpdate",{errors: errors.mapped(errors)}) }      
+        else {
+            db.Movie.update ( {
+                title : req.body.title,
+                rating :req.body.rating,
+                length : req.body.length,
+                awards : req.body.awards,
+                realese_date: req.body.realese_date  
+            }, 
+             { where: {id :req.body.id} 
+        } ) 
+            .then (movies =>{
+                res.send("Modificación Exitosa")
+            })}
+             
+},
     //delete: function (req, res) {
         // TODO
     //},

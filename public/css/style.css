@@ -18,6 +18,9 @@ figure{
   width: 20%;
 }
 #vuelvo{
+  color:blueviolet;
+  font-size:1rem;
+}
+#errorMapped{
   color:red;
-  font-size:1rem
 }

@@ -16,10 +16,11 @@
     <p>RATING: <%= movie.rating %> </p>
     <p>AWARDS: <%= movie.awards %> </p>
     <p>LENGTH: <%= movie.length + ' min'%> </p>
+    <p>ID Peli : <%= movie.id %></p>
     <p>RELEASE DATE: <%= movie.release_date %> </p>
      <br/>
      <div class= "closeMain" >
-        <p><a href="/movies/update/<%=movie.id %>" id="vuelvo">Modificar Datos Película</a></p>
+        <p><a href="/movies/update/<%= movie.id %>" id="vuelvo">Modificar Datos Película</a></p>
      </div>
      <br/>
      <div class= "closeMain" >
