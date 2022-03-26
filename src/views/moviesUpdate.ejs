@@ -12,21 +12,33 @@
     <figure>
         <img src="/img/logo-DH.png" alt="Logo Digital House">
       </figure>
-    <h1 class="titulo">Película a Editar:  <%= movie.title %></h1>
+    <h1 class="titulo">Película a MODIFICAR  <%= Movie.title %></h1>
     <section class="formulario">
-        <form action="/movies/update/<%= movie.id %>" method="POST">
-            <label for="title">Title </label>
-            <p>Titulo : <spam><%= movie.title %></spam></p>
-            <p>Modifica Título</p>
-            <p><input type="text" name="title" id="title" value="¿?"></p>
-            <label for="rating">Rating </label>
-            <p><input type="number" name="rating" id="rating" value="<%= movie.rating %>" ></p>
-            <label for="awards">Awards </label>
-            <p><input type="number" name="awards" id="awards" value="<%= movie.awards %>" ></p>
-            <label for="release_date">Release date </label>
-            <p><input type="date" name="release_date" id="release_date" value="<%= movie.release_date %>"></p>
+        <form action="/movies/update/<%= Movie %>" method="POST">
+            <label for="title"></label>
+            <p id="actualiza" >Titulo : <spam><%= Movie.title %></spam></p>
+            <p>Modifique Título</p>             
+            <p id="actualiza"><input type="text" name="title" id="title" value="Movie.title"></p>
+            <br/>
+            <p id="actualiza">Rating : <spam><%= Movie.rating %></spam></p>
+            <p>Modifique Rating</p>
+            <label for="rating"></label>
+            <p><input type="number" name="rating" id="rating" value="<%= Movie.rating %>" ></p>
+            <br/>
+            <p id="actualiza">Awards : <spam><%= Movie.awards %></spam></p>
+            <p>Modifique Awards</p>
+            <label for="awards"></label>
+            <p><input type="number" name="awards" id="awards" value="<%= Movie.awards %>" ></p>
+            <br/>
+            <p id="actualiza">Fecha de Estreno : <spam><%= Movie.release_date %></spam></p>
+            <p>Modifique fecha de Estreno</p>
+            <label for="release_date"></label>
+            <p><input type="date" name="release_date" id="release_date" value="<%= Movie.release_date %>"></p>
+            <br/>
+            <p id="actualiza">Duración : <spam><%= Movie.length %></spam></p>
+            <p>Modifique DURACION</p>
             <label for="length">Length </label>
-            <p><input type="number" name="length" id="" value="<%= movie.length %>" ></p>
+            <p><input type="number" name="length" id="" value="<%= Movie.length %>" ></p>
             <br>
             <p> <button class="botonAgregar" type="submit">Actualizar</button>
         

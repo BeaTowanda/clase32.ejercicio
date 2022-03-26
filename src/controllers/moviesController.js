@@ -68,8 +68,16 @@ const moviesController = {
     },     
     "edit": function(req,res) {
         console.log("esta en edit");
-        console.log(req.params.id + "  es el id que consulto");
-        res.render("moviesUpdate.ejs",{movie: req.params})
+        console.log(req.params + "  es el id que consulto");
+        console.log("id.Params es "+req.params.id)
+       
+        console.log("el req.params.title "+ req.params.title)
+        
+        db.Movie.findByPk(req.params.id)
+        .then(movie => {
+            res.render('moviesUpdate.ejs', {Movie:movie});
+        });        
+        //res.render("moviesUpdate.ejs",{Movie:Peli } )
     },      
     "update": function(req,res) {
         console.log("esta en update")

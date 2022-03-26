@@ -10,7 +10,7 @@ router.get('/movies/new', moviesController.new);
 router.get('/movies/recomended', moviesController.recomended);
 router.get('/movies/detail/:id', moviesController.detail);
 router.get ("/movies/update/:id",moviesController.edit)
-router.post("/movies/update/:id",[
+router.post("/movies/update/:Movie",[
     check('title').notEmpty().withMessage("Debe ingresar TITULO Completo")
     .bail(),
     check('rating').notEmpty().withMessage('Debe ingresar Rating'),
