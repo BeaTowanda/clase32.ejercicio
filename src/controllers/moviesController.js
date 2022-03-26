@@ -68,7 +68,7 @@ const moviesController = {
     },     
     "edit": function(req,res) {
         console.log("esta en edit");
-        console.log(req.params + "  es el id que consulto");
+        console.log(req.params.id + "  es el id que consulto");
         console.log("id.Params es "+req.params.id)
        
         console.log("el req.params.title "+ req.params.title)
@@ -85,6 +85,7 @@ const moviesController = {
         if (errors.errors.length !== 0){
             res.render ("moviesUpdate",{errors: errors.mapped(errors)}) }      
         else {
+            console.log ("en update el req.params id = "+ req.params.id)
             db.Movie.update ( {
                 title : req.body.title,
                 rating :req.body.rating,
