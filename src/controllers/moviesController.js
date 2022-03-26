@@ -92,20 +92,30 @@ const moviesController = {
                 awards : req.body.awards,
                 realese_date: req.body.realese_date  
             }, 
-             { where: {id :req.body.id} 
-        } ) 
-            .then (movies =>{
-                res.send("Modificación Exitosa")
-            })}
+             { where: {id :req.params.id} 
+        } );
+        res.send( "modificación existosa")            
              
-},
-    //delete: function (req, res) {
-        // TODO
-    //},
-    //destroy: function (req, res) {
-        // TODO
-    }
-
+}  },
+    "delete": function (req, res) {
+        console.log("esta en delete");
+        console.log(req.params + "  es el id que consulto");
+        console.log("id.Params es en delete  "+req.params.id)
+       
+        console.log("el req.params.title "+ req.params.title)
+        db.Movie.findByPk(req.params.id)
+        .then(movie => {            
+            res.render('moviesDelete.ejs', {Movie:movie});
+        });        
+              
+    },
+    "destroy" : function(req,res){  
+        console.log("entró a destroy y el params es =  " + req.params.id)   
+        db.Movie.destroy( {
+            where : {id: req.params.id} 
+        } ) 
+          res.send ("baja exitosa") }         
+     }       
 
 module.exports = moviesController;
 
