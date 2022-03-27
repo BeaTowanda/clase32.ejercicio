@@ -59,6 +59,7 @@ const moviesController = {
             rating :req.body.rating,
             length : req.body.length,
             awards : req.body.awards,
+            // probar datetime-local
             realese_date: req.body.realese_date 
           } )
           .then(movies => {
@@ -83,7 +84,11 @@ const moviesController = {
         console.log("esta en update")
         const errors = validationResult(req) ;
         if (errors.errors.length !== 0){
-            res.render ("moviesUpdate",{errors: errors.mapped(errors)}) }      
+            db.Movie.findByPk(req.params.id)
+             .then(movie => {
+                res.render('moviesUpdate.ejs',{errors: errors.mapped(errors),Movie:movie});
+             } ) }
+            //res.render ("moviesUpdate",{errors: errors.mapped(errors)},{movie:movie}) }      
         else {
             console.log ("en update el req.params id = "+ req.params.id)
             db.Movie.update ( {
@@ -95,6 +100,15 @@ const moviesController = {
             }, 
              { where: {id :req.params.id} 
         } );
+
+        // db.Movie.upsert ({
+        /*   id : req.params.id,
+               title : req.body.title,
+            rating :req.body.rating,
+             length : req.body.length,
+            awards : req.body.awards,
+            realese_date: req.body.realese_date
+        })*/
         res.send( "modificación existosa")            
              
 }  },

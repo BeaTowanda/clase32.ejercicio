@@ -14,8 +14,8 @@
       </figure>
     <h1 class="titulo">Película a MODIFICAR  <%= Movie.title %></h1>
     <section class="formulario">
-        <!-- <form action="/movies/update/<%= Movie.id %>" method="POST"> -->
-            <form action="/movies/update>" method="POST"></form>
+        <form action="/movies/update/<%= Movie.id %>" method="POST"> 
+
             <label for="title"></label>
             <p id="actualiza" >Titulo : <spam><%= Movie.title %></spam></p>
             <p>Modifique Título</p>             
@@ -56,9 +56,10 @@
                 <span id="errorMapped"> <%= errors.length.msg  %> </span>
               <% } %> 
             <br>
-            <p> <button class="botonAgregar" type="submit">Actualizar</button>
-        
-            <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
+            <p> <button class="botonAgregar" type="submit">Actualizar</button>         
         </form>
+        <br/>
+        <p><a id="vuelvo" href="/movies">Listado de Películas</a></p>
+        <p><a href="/" id="vuelvo">Volver a Pagina Principal</a></p>
     </section>
 </body>
