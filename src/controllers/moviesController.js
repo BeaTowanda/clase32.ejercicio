@@ -60,7 +60,7 @@ const moviesController = {
             length : req.body.length,
             awards : req.body.awards,
             // probar datetime-local
-            realese_date: req.body.realese_date 
+            release_date: req.body.release_date 
           } )
           .then(movies => {
              res.send("ALTA  REALIZADA")
@@ -96,7 +96,7 @@ const moviesController = {
                 rating :req.body.rating,
                 length : req.body.length,
                 awards : req.body.awards,
-                realese_date: req.body.realese_date  
+                release_date: req.body.release_date  
             }, 
              { where: {id :req.params.id} 
         } );

@@ -32,13 +32,25 @@ router.post('/movies/altaPeli',[
             let encontrada = movie} )
         if(encontrada){
             throw new Error ("Película ya está en la base")        }
-        return true } )*/ 
+        return true } ) ver que hay una nota de Mati guardada en promesas.sequelize*/ 
+    .custom (function(value){
+        return db.Movie.findOne({
+            where :{
+                title:value
+            }
+        } )
+        .then (movie => {
+            if(movie){
+                return Promise.reject(" La Película ya está en la BASE")                 
+            }
+        })
+        })   
     ,
     check('rating').notEmpty().withMessage('Debe ingresar Rating'),
  
     check('awards').notEmpty().withMessage("Los awards debe estar completo"),
  
-   // check('realese_date').notEmpty().withMessage("Los awards debe estar completo"),       
+ check('release_date').notEmpty().withMessage("Campo FECHA  debe estar completo")       
   
    // check('realese_date').notEmpty().withMessage("Los awards debe estar completo"),
        
